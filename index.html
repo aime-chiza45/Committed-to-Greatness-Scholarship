@@ -110,63 +110,12 @@ footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <section id="candidature"><div class="wrap">
 <h2>Candidature</h2>
 <p>Réponds avec tes propres mots, simplement et honnêtement. Nous préférons une réponse vraie à une réponse parfaite.</p>
-<form id="f">
-<div class="row">
-<div><label for="nom">Nom complet</label><input id="nom" required></div>
-<div><label for="age">Âge</label><input id="age" type="number" min="10" max="25" required></div>
-</div>
-<div class="row">
-<div><label for="ecole">École et classe</label><input id="ecole" required></div>
-<div><label for="quartier">Quartier à Goma</label><input id="quartier" required></div>
-</div>
-<div class="row">
-<div><label for="wa">Numéro WhatsApp</label><input id="wa" type="tel" required></div>
-<div><label for="mail">E-mail <small>si tu en as un</small></label><input id="mail" type="email"></div>
-</div>
-<div class="row">
-<div><label for="moy">Résultats récents <small>pourcentage ou mention</small></label><input id="moy"></div>
-<div><label for="heures">Temps disponible par semaine</label><select id="heures"><option>Moins de 2 heures</option><option selected>2 à 3 heures</option><option>Plus de 3 heures</option></select></div>
-</div>
-<div><label for="net">Accès à Internet</label><select id="net"><option>Régulier</option><option>Occasionnel</option><option>Très rare</option></select></div>
-<div><label for="q1">Décris une difficulté que tu as surmontée. <small>Que s’est-il passé, et qu’as-tu fait ? (150 à 250 mots)</small></label><textarea id="q1" required></textarea></div>
-<div><label for="q2">Qu’as-tu déjà fait pour les autres ? <small>À l’école, à l’église, dans ton quartier. Même un petit geste compte.</small></label><textarea id="q2" required></textarea></div>
-<div><label for="q3">Quelles études ou bourses vises-tu, et pourquoi ?</label><textarea id="q3" required></textarea></div>
-<div><label for="q4">Si tu es choisi, que feras-tu pour les autres jeunes de Goma dans les années à venir ?</label><textarea id="q4" required></textarea></div>
-<div class="check"><input type="checkbox" id="ok" required><label for="ok">Mes parents ou tuteurs sont informés et d’accord pour que je participe.</label></div>
-<div><button class="btn" type="submit">Préparer ma candidature</button></div>
-</form>
-<div id="msg" role="status"><p id="msgtxt"></p><textarea id="out" readonly aria-label="Ta candidature"></textarea></div>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfV0JwYkndHJM7kvSeewDveGYEiqq6b5Y3fCc6h1f_CDHW5Bw/viewform" target="_blank" rel="noopener">Ouvrir le formulaire de candidature</a>
+<p style="margin-top:18px;font-size:16px;color:var(--muted)">Le formulaire s’ouvre dans une nouvelle fenêtre. Compte 30 minutes. Tu peux le remplir sur ton téléphone. N’oublie pas de l’envoyer avant le mardi 10 novembre 2026.</p>
 </div></section>
 </main>
 
 <footer><div class="wrap">Committed to Greatness est une initiative communautaire gratuite, portée par Aime à Goma. Les informations des candidats restent confidentielles et ne servent qu’à la sélection.</div></footer>
 
-<script>
-// Mets ici l’adresse e-mail qui reçoit les candidatures.
-var CONTACT_EMAIL = "";
-document.getElementById("f").addEventListener("submit", function(e){
-  e.preventDefault();
-  var g = function(i){ return document.getElementById(i).value.trim(); };
-  var t = "CANDIDATURE — COMMITTED TO GREATNESS\n\n" +
-    "Nom : " + g("nom") + "\nÂge : " + g("age") + "\nÉcole/classe : " + g("ecole") +
-    "\nQuartier : " + g("quartier") + "\nWhatsApp : " + g("wa") + "\nE-mail : " + g("mail") +
-    "\nRésultats : " + g("moy") + "\nDisponibilité : " + g("heures") + "\nInternet : " + g("net") +
-    "\n\n1. Difficulté surmontée :\n" + g("q1") +
-    "\n\n2. Ce que j’ai fait pour les autres :\n" + g("q2") +
-    "\n\n3. Études/bourses visées :\n" + g("q3") +
-    "\n\n4. Ce que je ferai pour Goma :\n" + g("q4") +
-    "\n\nAccord des parents : oui";
-  var box = document.getElementById("msg"), txt = document.getElementById("msgtxt"), out = document.getElementById("out");
-  out.value = t; box.style.display = "block";
-  if (CONTACT_EMAIL) {
-    txt.textContent = "Ton application e-mail va s’ouvrir. Envoie le message sans le modifier.";
-    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Candidature CTG — " + g("nom")) + "&body=" + encodeURIComponent(t);
-  } else {
-    txt.textContent = "Ta candidature est prête. Copie le texte ci-dessous et envoie-le sur WhatsApp ou par e-mail à l’équipe.";
-    try { navigator.clipboard.writeText(t); txt.textContent += " Il a déjà été copié."; } catch (err) {}
-  }
-  box.scrollIntoView({behavior:"smooth", block:"center"});
-});
-</script>
 </body>
 </html>
